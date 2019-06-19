@@ -22,7 +22,7 @@ devtools::install_github("lch14forever/ggessentials")
 ```
 
 ### Usage
-```{r usage}
+```{r usage, message=FALSE, warning=FALSE}
 library(ggessentials)
 
 ## preset the theme

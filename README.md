@@ -15,13 +15,7 @@ devtools::install_github("lch14forever/ggessentials")
 
 ``` r
 library(ggessentials)
-```
 
-    ## Loading required package: ggplot2
-
-    ## Warning: package 'ggplot2' was built under R version 3.5.2
-
-``` r
 ## preset the theme
 geUseTheme('classic')
 ## to get a list of colors (1-17)
