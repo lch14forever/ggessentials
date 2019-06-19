@@ -4,12 +4,12 @@ Title: ggplot2 essential configurations used for paper figures
 Version: 0.1.0
 Author: Li Chenhao
 Maintainer: Li Chenhao <lichenhao.sg@gmail.com>
-Description: ggplot2 essentials for paper figures
+Description: My ggplot2 setup for figures in manuscripts.
 Depends:
     ggplot2
 Imports:
     ggsci
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
