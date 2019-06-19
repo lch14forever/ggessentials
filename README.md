@@ -2,6 +2,14 @@
 
 My ggplot2 essential configurations used for paper figures.
 
+### Installation
+
+```r
+devtools::install_github("lch14forever/ggessentials")
+```
+
+### Usage
+
 ```r
 library(ggessentials)
 
