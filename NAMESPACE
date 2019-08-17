@@ -2,5 +2,8 @@
 
 export(geGetColors)
 export(geUseTheme)
+export(scale_color_ge)
+export(scale_colour_ge)
+export(scale_fill_ge)
 import(ggplot2)
 import(ggsci)

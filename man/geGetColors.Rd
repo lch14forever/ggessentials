@@ -4,12 +4,14 @@
 \alias{geGetColors}
 \title{geGetColors}
 \usage{
-geGetColors(n, alpha = 1)
+geGetColors(n = 17, alpha = 1, named = FALSE)
 }
 \arguments{
-\item{n}{the number of colors to use (1-17)}
+\item{n}{the number of colors to use (1-17) [default: 17]}
 
 \item{alpha}{the alpha value for colors [default: 1]}
+
+\item{named}{return a list with color names [default: FALSE]}
 }
 \value{
 a vector of colors in hex code

@@ -16,6 +16,10 @@ knitr::opts_chunk$set(echo = TRUE)
  - `geUseTheme`: use a preset theme for plotting
  - `geGetColors`: get a vector of colors
 
+### Aesthetics
+
+ - `scale_color_ge`/`scale_fill_ge`: selected color scheme
+ 
 ### Installation
 ```{r install, eval=FALSE}
 devtools::install_github("lch14forever/ggessentials")
@@ -34,4 +38,17 @@ data("iris")
 ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
     geom_point() +
     scale_color_manual(values=colors)
+```
+
+#### Disrete color scale with `scale_color_ge` or `scale_fill_ge`
+
+```{r scale_color_ge, message=FALSE, warning=FALSE}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
+    geom_point() +
+    scale_color_ge()
+```
+```{r scale_fill_ge, message=FALSE, warning=FALSE}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, fill=Species)) + 
+    geom_point(shape=21) +
+    scale_fill_ge()
 ```
