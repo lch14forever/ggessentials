@@ -2,12 +2,18 @@
 
 ### Functions
 
-  - `geUseTheme`: use a preset theme for plotting
+  - `geUseTheme`: use a preset theme for plotting (support `bw` or
+    `classic` at the moment)
   - `geGetColors`: get a vector of colors
 
 ### Aesthetics
 
   - `scale_color_ge`/`scale_fill_ge`: selected color scheme
+
+### Themes
+
+  - `theme_bw_ge`
+  - `theme_classic_ge`
 
 ### Installation
 
@@ -20,18 +26,29 @@ devtools::install_github("lch14forever/ggessentials")
 ``` r
 library(ggessentials)
 
-## preset the theme
-geUseTheme('classic')
 ## to get a list of colors (1-17)
 colors <- geGetColors(3)
 
 data("iris")
 ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
     geom_point() +
-    scale_color_manual(values=colors)
+    scale_color_manual(values=colors) +
+    theme_bw_ge()
 ```
 
 ![](README_files/figure-gfm/usage-1.png)<!-- -->
+
+#### Set theme for the current session
+
+``` r
+## preset the theme
+geUseTheme('classic')
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
+    geom_point() +
+    scale_color_manual(values=colors)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 #### Disrete color scale with `scale_color_ge` or `scale_fill_ge`
 

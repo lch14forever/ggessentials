@@ -13,12 +13,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Functions
 
- - `geUseTheme`: use a preset theme for plotting
+ - `geUseTheme`: use a preset theme for plotting (support `bw` or `classic` at the moment)
  - `geGetColors`: get a vector of colors
-
+ 
 ### Aesthetics
 
  - `scale_color_ge`/`scale_fill_ge`: selected color scheme
+
+### Themes
+
+ - `theme_bw_ge`
+ - `theme_classic_ge`
  
 ### Installation
 ```{r install, eval=FALSE}
@@ -29,12 +34,21 @@ devtools::install_github("lch14forever/ggessentials")
 ```{r usage, message=FALSE, warning=FALSE}
 library(ggessentials)
 
-## preset the theme
-geUseTheme('classic')
 ## to get a list of colors (1-17)
 colors <- geGetColors(3)
 
 data("iris")
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
+    geom_point() +
+    scale_color_manual(values=colors) +
+    theme_bw_ge()
+```
+
+#### Set theme for the current session
+
+```{r}
+## preset the theme
+geUseTheme('classic')
 ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
     geom_point() +
     scale_color_manual(values=colors)
@@ -47,6 +61,7 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +
     geom_point() +
     scale_color_ge()
 ```
+
 ```{r scale_fill_ge, message=FALSE, warning=FALSE}
 ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, fill=Species)) + 
     geom_point(shape=21) +

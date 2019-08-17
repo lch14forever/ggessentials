@@ -10,5 +10,5 @@ geUseTheme(theme = "bw")
 \item{theme}{ggplot themes (either "bw" or "classic")}
 }
 \description{
-geUseThemeBW
+Set the theme in the current session
 }
