@@ -27,12 +27,12 @@ ge_pal <- function(primary = "blue", other = "grey", direction = 1) {
     ge_colors <- geGetColors(named=TRUE)
     stopifnot(primary %in% names(ge_colors))
     function(n) {
-        if (n > 17) warning("Branded Color Palette only has 17 colors.")
+        if (n > 17) warning("GE Color Palette only has 17 colors.")
         if (n == 2) {
             other <- if (!other %in% names(ge_colors)) {
                 other
             } else {
-                branded_colors[other]
+                ge_colors[other]
             }
             color_list <- c(other, ge_colors[primary])
         } else {
