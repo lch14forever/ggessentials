@@ -41,7 +41,7 @@ names, color, fill
 
 ![](README_files/figure-markdown_strict/usage-1.png)
 
-#### Italicize taxon name in a plot
+#### Italicize a taxon name in a plot
 
     p <- ggplot(iris, aes(x=Species, y=Sepal.Width, color=Species)) + 
         geom_boxplot() +

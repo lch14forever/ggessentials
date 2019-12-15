@@ -50,7 +50,7 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +
     theme_bw_ge()
 ```
 
-#### Italicize taxon name in a plot
+#### Italicize a taxon name in a plot
 
 ```{r italicize.plot, message=FALSE, warning=FALSE}
 p <- ggplot(iris, aes(x=Species, y=Sepal.Width, color=Species)) + 
