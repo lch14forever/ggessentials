@@ -33,7 +33,6 @@ italicize.plot <- function(p, string){
                                                   function(x) italicize.string(x, string)),
                                     values=unique(build.plot$data[[1]]$colour))
     }
-    g
     ## change fill
     if(!is.null(p$labels$fill)){
         g <- g + scale_fill_manual(labels=lapply(levels(build.plot$plot$data[,build.plot$plot$labels$fill]),

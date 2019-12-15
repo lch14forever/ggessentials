@@ -8,9 +8,11 @@
   - `italicize.string`: italicize strings in a sentence
   - `italicize.plot`: italicize strings in a ggplot
 
-Known issues with `italicize.plot`: - does not support bold font face -
-create multiple legend guides - supported elemnets: axis labels, axis
-names, color, fill
+Known issues with `italicize.plot`:
+
+  - does not support bold font face
+  - create multiple legend guides
+  - supported elemnets: axis labels, axis names, color, fill
 
 ### Aesthetics
 
