@@ -1,4 +1,4 @@
-#' @title geUseThemeBW
+#' @title geUseTheme
 #'
 #' @import ggplot2
 #' @param theme ggplot themes (either "bw" or "classic")

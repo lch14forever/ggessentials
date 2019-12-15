@@ -1,7 +1,6 @@
 ---
 output:
-  md_document:
-    variant: gfm
+  md_document
 html_preview: false
 ---
 
@@ -15,6 +14,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
  - `geUseTheme`: use a preset theme for plotting (support `bw` or `classic` at the moment)
  - `geGetColors`: get a vector of colors
+ - `italicize.string`: italicize strings in a sentence
+ - `italicize.plot`: italicize strings in a ggplot
+
+Known issues with `italicize.plot`:
+ - does not support bold font face
+ - create multiple legend guides
+ - supported elemnets: axis labels, axis names, color, fill
  
 ### Aesthetics
 
@@ -44,6 +50,17 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +
     theme_bw_ge()
 ```
 
+#### Italicize taxon name in a plot
+
+```{r italicize.plot, message=FALSE, warning=FALSE}
+p <- ggplot(iris, aes(x=Species, y=Sepal.Width, color=Species)) + 
+    geom_boxplot() +
+    scale_color_manual(values=colors) +
+    theme_bw_ge()
+italicize.plot(p, 'setosa')
+```
+
+
 #### Set theme for the current session
 
 ```{r}
@@ -67,3 +84,4 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, fill=Species)) +
     geom_point(shape=21) +
     scale_fill_ge()
 ```
+

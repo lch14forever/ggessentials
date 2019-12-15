@@ -2,6 +2,8 @@
 
 export(geGetColors)
 export(geUseTheme)
+export(italicize.plot)
+export(italicize.string)
 export(scale_color_ge)
 export(scale_colour_ge)
 export(scale_fill_ge)
@@ -9,3 +11,4 @@ export(theme_bw_ge)
 export(theme_classic_ge)
 import(ggplot2)
 import(ggsci)
+importFrom(lazyeval,as_name)

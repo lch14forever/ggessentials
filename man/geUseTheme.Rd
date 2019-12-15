@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme_set.r
 \name{geUseTheme}
 \alias{geUseTheme}
-\title{geUseThemeBW}
+\title{geUseTheme}
 \usage{
 geUseTheme(theme = "bw")
 }
