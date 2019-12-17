@@ -52,16 +52,10 @@ p <- ggplot(iris, aes(x=Species, y=Sepal.Width, color=Species)) +
     scale_color_manual(values=colors) +
     theme_bw_ge()
 
-g <- italicize.plot(p, string = c('setosa', 'versicolor'))
+grid::grid.draw(italicize.plot(p, string = c('setosa', 'versicolor')))
 ```
 
 ![](README_files/figure-gfm/italicize.plot-1.png)<!-- -->
-
-``` r
-plot(g)
-```
-
-![](README_files/figure-gfm/italicize.plot-2.png)<!-- -->
 
 #### Set theme for the current session
 

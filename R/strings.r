@@ -31,7 +31,7 @@ italicize.plot <- function(p, string){
         g <- editGrob(grid.force(g), gPath(txt[i]),
                       grep = TRUE, label=label.new)
     }
-    g
+    return(g)
 }
 
 
