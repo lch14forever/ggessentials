@@ -4,12 +4,12 @@
 \alias{italicize.string}
 \title{italicize.string}
 \usage{
-italicize.string(sentence, taxon, ...)
+italicize.string(sentence, taxon)
 }
 \arguments{
 \item{sentence}{a sentence}
 
-\item{taxon}{a string to italicize}
+\item{taxon}{a string (or vector of strings) to italicize in the given sentence}
 }
 \description{
 italicize everything that matches the `taxon` in a given sentence

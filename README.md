@@ -10,9 +10,7 @@
 
 Known issues with `italicize.plot`:
 
-  - does not support bold font face
-  - create multiple legend guides
-  - supported elemnets: axis labels, axis names, color, fill
+  - overwrites bold font face
 
 ### Aesthetics
 
@@ -53,10 +51,17 @@ p <- ggplot(iris, aes(x=Species, y=Sepal.Width, color=Species)) +
     geom_boxplot() +
     scale_color_manual(values=colors) +
     theme_bw_ge()
-italicize.plot(p, 'setosa')
+
+g <- italicize.plot(p, string = c('setosa', 'versicolor'))
 ```
 
 ![](README_files/figure-gfm/italicize.plot-1.png)<!-- -->
+
+``` r
+plot(g)
+```
+
+![](README_files/figure-gfm/italicize.plot-2.png)<!-- -->
 
 #### Set theme for the current session
 

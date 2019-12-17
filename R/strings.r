@@ -1,43 +1,35 @@
 #' @title italicize.plot
 #'
-#' @import ggplot2
-#' @importFrom lazyeval as_name
 #' @param p a ggplot object
-#' @param string string to replace
+#' @param string string or vector of strings to replace
+#' @import ggplot2
+#' @importFrom grid editGrob
+#' @importFrom grid grid.ls
+#' @importFrom grid grid.force
+#' @importFrom grid getGrob
+#' @importFrom grid gPath
 #' @description italicize everything that matches the `string` in a given plot `p`
+#' @references https://github.com/GuangchuangYu/yyplot/blob/master/R/set_font.R
+#'
+#' @examples
+#' library(ggessentials)
+#' data(iris)
+#' p <- ggplot(iris, aes(x=Species, y=Sepal.Width, color=Species)) +
+#'   geom_boxplot()
+#' g <- italicize.plot(p, c('setosa','versicolor'))
+#' plot(g)
+#'
 #' @export
 italicize.plot <- function(p, string){
-    g <- p
-    build.plot <- ggplot_build(g)
+    g <- ggplotGrob(p)
+    ng <- grid.ls(grid.force(g), print=FALSE)$name
+    txt <- ng[which(grepl("text", ng))]
 
-    ## change axis label and legend label
-    g$labels <- lapply(p$labels, function(x) italicize.string(x, string))
-    g$labels <- lapply(p$labels, function(x) italicize.string(x, string))
-
-    ## change x axis
-    x.col <- as.character(as_name(p$mapping$x))
-    if(!is.numeric(p$data[, x.col])){
-        g <- g + scale_x_discrete(labels=unlist(lapply(levels(p$data[, x.col]),
-                                                       italicize.string, taxon=string)))
-    }
-    ## change y axis
-    y.col <- as.character(as_name(p$mapping$y))
-    if(!is.numeric(p$data[, y.col])){
-        g <- g + scale_y_discrete(labels=unlist(lapply(levels(p$data[, y.col]),
-                                                       italicize.string, taxon=string)))
-    }
-
-    ## change color
-    if(!is.null(p$labels$colour)){
-        g <- g + scale_color_manual(labels=lapply(levels(build.plot$plot$data[,build.plot$plot$labels$colour]),
-                                                  function(x) italicize.string(x, string)),
-                                    values=unique(build.plot$data[[1]]$colour))
-    }
-    ## change fill
-    if(!is.null(p$labels$fill)){
-        g <- g + scale_fill_manual(labels=lapply(levels(build.plot$plot$data[,build.plot$plot$labels$fill]),
-                                                 function(x) italicize.string(x, string)),
-                                   values=unique(build.plot$data[[1]]$fill))
+    for (i in seq_along(txt)) {
+        label.original <- getGrob(grid.force(g), gPath(txt[i]))$label
+        label.new <- italicize.string(label.original, string)
+        g <- editGrob(grid.force(g), gPath(txt[i]),
+                      grep = TRUE, label=label.new)
     }
     g
 }
@@ -46,16 +38,16 @@ italicize.plot <- function(p, string){
 #' @title italicize.string
 #'
 #' @param sentence a sentence
-#' @param taxon a string to italicize
+#' @param taxon a string (or vector of strings) to italicize in the given sentence
+#' @importFrom stringr str_replace_all
 #' @description italicize everything that matches the `taxon` in a given sentence
 #' @export
-italicize.string <- function(sentence, taxon, ...){
+italicize.string <- function(sentence, taxon){
     ## already an expression
     if(!is.character(sentence)) return(sentence)
-    ## no pattern matched
-    if(length(grep(x=sentence, taxon, fixed = TRUE))==0) return(sentence)
-    p <- taxon
-    s <- paste0("'~italic('", taxon, "')~'")
-    str <- gsub(x=paste0("'",sentence,"'"), p, s, fixed = TRUE)
+    s <- vapply(unique(taxon),
+                function(x) paste0("'~italic('", x, "')~'"), 'string')
+    str <- str_replace_all(sentence, s)
+    str <- paste0("'", str, "'")
     return(parse(text=bquote(.(str))))
 }

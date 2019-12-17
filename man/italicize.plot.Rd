@@ -9,8 +9,20 @@ italicize.plot(p, string)
 \arguments{
 \item{p}{a ggplot object}
 
-\item{string}{string to replace}
+\item{string}{string or vector of strings to replace}
 }
 \description{
 italicize everything that matches the `string` in a given plot `p`
+}
+\examples{
+library(ggessentials)
+data(iris)
+p <- ggplot(iris, aes(x=Species, y=Sepal.Width, color=Species)) +
+  geom_boxplot()
+g <- italicize.plot(p, c('setosa','versicolor'))
+plot(g)
+
+}
+\references{
+https://github.com/GuangchuangYu/yyplot/blob/master/R/set_font.R
 }
