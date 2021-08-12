@@ -20,6 +20,11 @@ Known issues with `italicize.plot`:
 
 -   `theme_bw_ge`
 -   `theme_classic_ge`
+-   `theme_umap_ge`
+
+Known issue with `theme_umap_ge`: this is a function returns a list of
+`geom_text`, `geom_segment` and `theme_void()`. Better implementation
+should define `element_line_umap` that can be used in `theme(axis.line)`
 
 ### Installation
 
@@ -89,8 +94,15 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, fill=Species)) +
 
 #### Simplified axes (for UMAP plots)
 
-TODO: I would prefer a “ggploty” way of doing this. Prof. Guangchuang Yu
-suggested using a `element_line_umap` element to draw `axis.line`
+``` r
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
+    geom_point() +
+    theme_umap_ge()
+```
+
+![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+Another implementation \[will be replaced by `theme_umap_ge` soon\]
 
 ``` r
 g <- ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
@@ -100,4 +112,4 @@ g <- ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +
 add_axes_umap(g)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->

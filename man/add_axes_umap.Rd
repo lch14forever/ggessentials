@@ -4,7 +4,7 @@
 \alias{add_axes_umap}
 \title{add_axes_umap}
 \usage{
-add_axes_umap(g, vjust = 1.2)
+add_axes_umap(g, vjust.x = 1.2, vjust.y = 1.2)
 }
 \description{
 add_axes_umap

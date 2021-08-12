@@ -5,11 +5,7 @@
 \title{theme_classic_ge}
 \usage{
 theme_classic_ge()
-
-theme_classic_ge()
 }
 \description{
 theme_classic_ge
-
-theme_umap
 }

@@ -39,13 +39,18 @@ theme_classic_ge <- function(){
 }
 
 
-#' @title theme_umap
+#' @title theme_umap_ge
 #'
 #' @import ggplot2
 #' @export
-theme_classic_ge <- function(){
-    figtheme <- theme_void()
-    figtheme
+theme_umap_ge <- function(vjust.x=2, vjust.y=-1){
+    list(
+        geom_reduction_axes(color="black",
+                            arrow=arrow(length = unit(0.3,"cm"), type = "closed")),
+        geom_reduction_axes_label(label="UMAP 1", vjust=vjust.x),
+        geom_reduction_axes_label(label="UMAP 2", axis=2, angle=90, vjust=vjust.y),
+        theme_void()
+    )
 }
 
 
