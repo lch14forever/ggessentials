@@ -37,3 +37,43 @@ theme_classic_ge <- function(){
     figtheme <- theme_classic() +getTheme()
     figtheme
 }
+
+
+#' @title theme_umap
+#'
+#' @import ggplot2
+#' @export
+theme_classic_ge <- function(){
+    figtheme <- theme_void()
+    figtheme
+}
+
+
+#' @title add_axes_umap
+#'
+#' @import ggplot2
+#' @export
+add_axes_umap <- function(g, vjust=1.2){
+    gobj <- ggplot_build(g)
+
+    o.x <- gobj$layout$panel_scales_x[[1]]$range$range[1]
+    o.y <- gobj$layout$panel_scales_y[[1]]$range$range[1]
+
+    offset <- diff(gobj$layout$panel_scales_x[[1]]$range$range)/10
+
+    g +
+        theme_void() +
+        annotate(geom = "segment", x=o.x-offset, xend = o.x+offset,
+                 y = o.y-offset, yend = o.y-offset,
+                 arrow=arrow(length = unit(0.3,"cm"), type = "closed")) +
+        annotate(geom = "segment", x=o.x-offset, xend = o.x-offset,
+                 y = o.y-offset, yend = o.y+offset,
+                 arrow=arrow(length = unit(0.3,"cm"), type = "closed")) +
+        annotate(geom = "text", label="UMAP 1", x=o.x,
+                 y = o.y-offset,
+                 vjust=vjust) +
+        annotate(geom = "text", label="UMAP 2", x=o.x-offset, angle=90,
+                 y = o.y,
+                 vjust=vjust)
+
+}

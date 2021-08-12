@@ -2,24 +2,24 @@
 
 ### Functions
 
-  - `geUseTheme`: use a preset theme for plotting (support `bw` or
+-   `geUseTheme`: use a preset theme for plotting (support `bw` or
     `classic` at the moment)
-  - `geGetColors`: get a vector of colors
-  - `italicize.string`: italicize strings in a sentence
-  - `italicize.plot`: italicize strings in a ggplot
+-   `geGetColors`: get a vector of colors
+-   `italicize.string`: italicize strings in a sentence
+-   `italicize.plot`: italicize strings in a ggplot
 
 Known issues with `italicize.plot`:
 
-  - overwrites bold font face
+-   overwrites bold font face
 
 ### Aesthetics
 
-  - `scale_color_ge`/`scale_fill_ge`: selected color scheme
+-   `scale_color_ge`/`scale_fill_ge`: selected color scheme
 
 ### Themes
 
-  - `theme_bw_ge`
-  - `theme_classic_ge`
+-   `theme_bw_ge`
+-   `theme_classic_ge`
 
 ### Installation
 
@@ -86,3 +86,18 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, fill=Species)) +
 ```
 
 ![](README_files/figure-gfm/scale_fill_ge-1.png)<!-- -->
+
+#### Simplified axes (for UMAP plots)
+
+TODO: I would prefer a “ggploty” way of doing this. Prof. Guangchuang Yu
+suggested using a `element_line_umap` element to draw `axis.line`
+
+``` r
+g <- ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
+    geom_point() +
+    scale_color_manual(values=colors) +
+    theme_bw_ge()
+add_axes_umap(g)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->

@@ -50,6 +50,7 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +
     theme_bw_ge()
 ```
 
+
 #### Italicize a taxon name in a plot
 
 ```{r italicize.plot, message=FALSE, warning=FALSE}
@@ -86,3 +87,14 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, fill=Species)) +
     scale_fill_ge()
 ```
 
+#### Simplified axes (for UMAP plots)
+
+TODO: I would prefer a "ggploty" way of doing this. Prof. Guangchuang Yu suggested using a `element_line_umap` element to draw `axis.line`
+
+```{r}
+g <- ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) + 
+    geom_point() +
+    scale_color_manual(values=colors) +
+    theme_bw_ge()
+add_axes_umap(g)
+```
