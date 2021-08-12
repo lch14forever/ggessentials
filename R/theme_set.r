@@ -53,7 +53,7 @@ theme_classic_ge <- function(){
 #'
 #' @import ggplot2
 #' @export
-add_axes_umap <- function(g, vjust=1.2){
+add_axes_umap <- function(g, vjust.x=1.2, vjust.y=1.2){
     gobj <- ggplot_build(g)
 
     o.x <- gobj$layout$panel_scales_x[[1]]$range$range[1]
@@ -71,9 +71,9 @@ add_axes_umap <- function(g, vjust=1.2){
                  arrow=arrow(length = unit(0.3,"cm"), type = "closed")) +
         annotate(geom = "text", label="UMAP 1", x=o.x,
                  y = o.y-offset,
-                 vjust=vjust) +
+                 vjust=vjust.x) +
         annotate(geom = "text", label="UMAP 2", x=o.x-offset, angle=90,
                  y = o.y,
-                 vjust=vjust)
+                 vjust=vjust.y)
 
 }
